@@ -1,11 +1,12 @@
 package pages;
 
-import org.openqa.selenium.Webdriver;
+import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage {
-    Webdriver driver;
+    WebDriver driver;
     public static final String BASE_URL = "https://www.saucedemo.com/";
+
     public BasePage(WebDriver driver) {
-        this.driver=driver;
+        this.driver = driver;
     }
 }
