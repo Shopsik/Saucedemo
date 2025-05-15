@@ -13,20 +13,22 @@ public class LoginTest extends BaseTest {
         loginPage.login("standard_user", "secret_sauce");
         assertTrue(productPage.titleIsDisplayed());
         assertEquals(productPage.getTitle(), "Products");
+        productPage.addToCart("Sauce Labs Bike Light");
     }
 
     @Test(priority = 2)
     public void incorrectLogin() {
         loginPage.open();
         loginPage.login("", "secret_sauce");
-        assertTrue(productPage.titleIsDisplayed());
-        assertEquals(driver.findElement(By.xpath("//*[@class='title']")).getText(), "Products");
+        String errorMsg = driver.findElement(By.xpath("//*[@data-test='error']")).getText();
+        assertEquals(errorMsg, "Epic sadface: Username is required", "Epic sadface");
     }
 
     @Test(priority = 1)
     public void incorrectPasswordLogin() {
         loginPage.open();
         loginPage.login("", "secret_");
-        assertEquals(driver.findElement(By.xpath("//*[@class='title']")).getText(), "Products");
+        String errorMsg = driver.findElement(By.xpath("//*[@data-test='error']")).getText();
+        assertEquals(errorMsg, "Epic sadface: Username is required", "Epic sadface");
     }
 }
