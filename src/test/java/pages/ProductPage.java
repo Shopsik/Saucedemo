@@ -1,7 +1,9 @@
 package pages;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductPage extends BasePage {
     private final By title = By.cssSelector("[class='title']");
@@ -25,4 +27,18 @@ public class ProductPage extends BasePage {
         By addToCart = By.xpath(String.format(ADD_TO_CART_BUTTON_PATTERN, goodsName));
         driver.findElement(addToCart).click();
     }
+
+    public void addToCart(int index) {
+        driver.findElements(By.xpath("//*[text()='Add to cart']")).get(index).click();
+    }
+
+    public void isOpen() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Add to cart']")));
+    }
+
+    public void openCart() {
+        driver.findElement(By.xpath("//*[@data-test='shopping-cart-link']")).click();
+    }
+
+
 }
