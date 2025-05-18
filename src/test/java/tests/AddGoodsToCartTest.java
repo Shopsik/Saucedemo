@@ -1,8 +1,11 @@
 package tests;
 
 
+import org.testng.annotations.Test;
+
 import static org.testng.Assert.assertTrue;
 
+@Test
 public class AddGoodsToCartTest extends BaseTest {
     public void checkGoodsInCart() {
         loginPage.open();
@@ -13,6 +16,5 @@ public class AddGoodsToCartTest extends BaseTest {
         productPage.addToCart(3);
         productPage.openCart();
         assertTrue(cartPage.getProductsNames().contains("Sauce Labs Backpack"));
-        //assertEquals(cartPage.getProductsNames().size(), "3");
     }
 }
