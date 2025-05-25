@@ -27,7 +27,7 @@ public class BaseTest {
         if (browser.equalsIgnoreCase("chrome")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("start-maximized");
-            //options.addArguments("headless");
+            options.addArguments("headless");
             options.addArguments("--guest");
             driver = new ChromeDriver(options);
         } else if (browser.equalsIgnoreCase("edge")) {
@@ -44,6 +44,6 @@ public class BaseTest {
 
     @AfterMethod
     public void close() {
-        //driver.quit();
+        driver.quit();
     }
 }

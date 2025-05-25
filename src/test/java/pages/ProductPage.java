@@ -38,6 +38,4 @@ public class ProductPage extends BasePage {
     public void openCart() {
         driver.findElement(By.xpath("//*[@data-test='shopping-cart-link']")).click();
     }
-
-
 }
